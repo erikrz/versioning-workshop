@@ -21,7 +21,7 @@ import io.swagger.v3.oas.models.info.License;
 public class SwaggerConfiguration {
 
     protected String getApiTitle() {
-        return "Contacts Service Example";
+        return "Contacts Service";
     }
 
     protected String getApiVersion() {
@@ -35,15 +35,6 @@ public class SwaggerConfiguration {
     protected String getBasePackage() {
         return "com.github.erikrz.contacts.service.controller";
     }
-
-    protected Set<String> getProduces() {
-        return Collections.singleton("application/json");
-    }
-
-    protected Set<String> getConsumes() {
-        return Collections.singleton("application/json");
-    }
-
     protected String getLicenseDisplayText() {
         return "Apache License Version 2.0";
     }
@@ -71,19 +62,20 @@ public class SwaggerConfiguration {
     @Bean
     public GroupedOpenApi apiDocket() {
         return GroupedOpenApi.builder()
+                .packagesToScan(getBasePackage())
                 .group("contacts")
                 .pathsToMatch("/rest-api/**")
+                .addOpenApiCustomiser(openApi -> openApi.setInfo(getApiInfo()))
                 .build();
     }
 
-    private OpenAPI getApiInfo() {
-        return (new OpenAPI())
-                .info(new Info().title(this.getApiTitle())
+    private Info getApiInfo() {
+        return new Info().title(this.getApiTitle())
                         .description(this.getApiDescription())
                         .version(this.getApiVersion())
                         .contact(new Contact().email(this.getContactEmail()).name(this.getContactName())
                                 .url(this.getContactUrl()))
                         .termsOfService(this.getTermsOfServiceUrl())
-                        .license(new License().name(this.getLicenseDisplayText()).url(this.getLicenseUrl())));
+                        .license(new License().name(this.getLicenseDisplayText()).url(this.getLicenseUrl()));
     }
 }
