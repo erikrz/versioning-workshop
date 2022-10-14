@@ -8,7 +8,7 @@
         <artifactId>contacts-service-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>contacts-client-boot-starter</artifactId>
+    <artifactId>contacts-client-spring-boot-starter</artifactId>
     <packaging>jar</packaging>
 
     <name>Contacts Client Spring Boot Starter</name>

@@ -29,11 +29,11 @@ public class ContactsClientFactory {
                 .build());
     }
 
-    public <T> T buildNextivaClient(Class<T> clazz, String baseUri) {
+    public <T> T buildClient(Class<T> clazz, String baseUri) {
         return buildFeignBuilder(Logger.Level.FULL).target(clazz, baseUri);
     }
 
-    public <T> T buildNextivaClient(Class<T> clazz, String baseUri, Logger.Level level) {
+    public <T> T buildClient(Class<T> clazz, String baseUri, Logger.Level level) {
         return buildFeignBuilder(level).target(clazz, baseUri);
     }
 

@@ -36,7 +36,7 @@ public class ContactsServiceClientConfig {
 
     @Bean
     public ContactsClient meetingOrchestrationClient() {
-        return contactsClientFactory.buildNextivaClient(ContactsClient.class, properties.getBaseUri());
+        return contactsClientFactory.buildClient(ContactsClient.class, properties.getBaseUri());
     }
 
     @Bean(name = "contactsServiceClientObjectMapper")
