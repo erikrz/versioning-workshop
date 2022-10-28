@@ -76,6 +76,7 @@ public class ContactsController {
 
     @Operation(summary = "GET a single contact", operationId = "getContactById")
     @ApiResponse(responseCode = "200")
+    @ApiResponse(responseCode = "400")
     @ApiResponse(responseCode = "404")
     @GetMapping(value = "/contacts/{contactId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ContactDto> getContactById(
